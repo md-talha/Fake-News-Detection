@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fake News Detection</title>
+    <style>
+        .bgimg{
+            
+            background-image:url('{{ STATIC_URL }}media/fn1.jpg');
+            background-repeat:no-repeat;
+            background-size:100%;
+        }
+        .txt{
+            color:"white"
+        }
+        
+    </style>
+
+</head>
+
+<body class="bgimg txt" >
+    {% block content %}  
+    
+    {% endblock %}
+</body>
+      
+</html>

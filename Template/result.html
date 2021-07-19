@@ -1,0 +1,61 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Fake News Detection</title>
+</head>
+<body >
+    <nav class="navbar navbar-dark bg-light" style="background-color: #0d92f1;">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" style="color: white;"" href="/">Fake News Detection</a>
+          </div>
+          
+          <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+            <li style="color: white;">Welcome, {{user.username}}</li>
+            <li><a style="color: white;" href="/"><span style="color: white;" class="fa fa-sign-out"></span>Logout</a></li>
+
+            {% endif %}
+            
+          </ul>
+        </div>
+      </nav>
+
+
+
+
+    <div style="margin-left: 40px;"> 
+    <h3>The given News is </h3> <p>{{name1}}</p> 
+    <hr/>
+    <br>
+    <h2>The Predictions of the given News is, </h2>
+    <h1>{{msg}}</h1>
+    {% if 'Real' in msg %}
+    {% for i in ins %}
+    {% if i.title == name1 or i.description == name1 %}
+
+    <h1>Date of the News Published : {{i.date}}</h1>
+    <h1>You can find the detailed News in the below URL</h1>
+    <h1>Click the URL <a href="{{i.url}}" target="_blank"> {{i.url}}</a></h1>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    
+    {% if 'Fake' in msg %}
+    <h1>As per our database,your searched News Seems to be FAKE NEWS</h1>
+    <h1>As Per wikipedia</h1>
+    <p>{{wiki}}</p>
+    <h1>To see information from google <a href="{{google}}" target="_blank">Click Here</a></h1>
+    {% endif %}
+    </div>
+    <a href="home">Back to Home</a>
+</body>
+</html>
+
+

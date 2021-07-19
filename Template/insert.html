@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=from, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Add News</title>
+    <style>
+         .clr{
+            background-color: #303C45;
+            height: 60px;
+       }
+        .conmar{
+            margin:2% 0% 4% 30%;
+        }
+        .card{
+            width:500px;
+        }
+        
+        .row{
+            margin-top: 10px;;
+        }
+        .ps{
+            margin-top: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">Fake News Detection</a>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+            <li style="color: white;">Welcome, {{user.username}}</li>
+            <li><a style="color: white;" href="/"><span style="color: white;" class="fa fa-sign-out"></span>Logout</a></li>
+
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    <div class='conmar'>
+    <div class="card" >
+        <div class="clr text-center">
+            <h2 class="ps" style="color: white;">Add New News</h2>
+        </div> 
+    <div class="container">
+        <div style="color: black; background-color: lightgreen;">
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        
+    <form action="insert" method="POST">
+        {% csrf_token %}
+        <div class="row">
+        <div class="col-md-4">
+        <label class="mar">Date</label>
+    </div>    
+    <div class="col-md-8">
+        <input type="date" name="date" class="form-control"  placeholder="Date" required>
+    </div>
+    </div>  
+    <div class="row">
+        <div class="col-md-4">
+        <label class="mar">Title</label>
+    </div>
+    <div class="col-md-8">
+    <input type="text" name="title" class="form-control" placeholder="Title" required>
+</div>
+    </div>  
+    <div class="row">
+        <div class="col-md-4">
+        <label class="mar">Description</label>
+    </div>
+    <div class="col-md-8">
+    <textarea name="description" cols="30" rows="10" placeholder="Description" required></textarea>
+</div>
+    </div>   
+    <div class="row">
+        <div class="col-md-4">
+        <label class="mar">URL</label>
+    </div>
+    <div class="col-md-8">
+    <input type="url" name="url" class="form-control" placeholder="URL" required>
+</div>
+    </div>   
+        <input type="submit"  class="btn btn-success" value="Submit">
+        
+    </form>
+
+    
+    </div>
+</div>
+</div>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+    <script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+</body>
+</html>

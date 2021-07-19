@@ -1,0 +1,51 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Fake News Detection</title>
+</head>
+<body>
+    <nav class="navbar navbar-light" style="background-color: #0d92f1;">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" style="color: white;" href="/">Fake News Detection</a>
+          </div>
+          
+          <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+            <li style="color: white;">Welcome, {{user.username}}</li>
+            <li><a style="color: white;" href="logout"><span style="color: white;" class="fa fa-sign-out"></span>Logout</a></li>
+
+            {% else %}
+            
+            <li><a style="color: white;" href="register"><span style="color: white;" class="fa fa-user-plus"></span> Sign Up</a></li>
+            <li><a style="color: white;" href="login"><span style="color: white;" class="fa fa-sign-in"></span> Login</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    <h1>Fake News Detection </h1>
+
+    <form action="test" method='post'>
+
+    {% csrf_token %}
+    <div style="margin: 12%;">
+    <textarea name="news" class="form-control" rows="5" cols="30" placeholder="Enter a News" required></textarea>
+    <br>
+    <input type="submit" class="btn btn-success" value="Search">
+    </div>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+    <script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+    <title>Registration</title>
+    <style>
+        .clr{
+            background-color: #303C45;
+            height: 60px;
+            
+        }
+        .conmar{
+            margin:8% 0% 0% 30%;
+        }
+        .card{
+            width:500px;
+        }
+        .pd{
+            margin-left: -8px;
+        }
+        .ps{
+            margin-top: 10px;
+        }
+        .row{
+            margin-top: 10px;;
+        }
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">Fake News Detection</a>
+          </div>
+          
+          <ul class="nav navbar-nav navbar-right">
+           
+            <li ><a style="color: white;" href="login"><span style="color: white;" class="fa fa-sign-in"></span> Login</a></li>
+           
+          </ul>
+        </div>
+      </nav>
+    <div class='conmar'>
+        <div class="card " >
+        <div class="clr text-center">
+            <a type="button" href="login" class="btn btn-primary  ps" >  Login</a>
+            <a type="button"  class="btn btn-secondary pd ps" disabled> Register</a>    
+        </div>  
+        <div class="container">  
+            <div style="color: red;">
+                {% for message in messages %}
+                <p>{{ message }}</p>
+                {% endfor %}
+            </div>  
+    <form action="register" method="POST">
+        {% csrf_token %}
+        <div class="row">
+        <div class="col-md-4 ">
+        <label class="">First Name</label></div>
+        <div class="col-md-8">
+        <input type="text" name="first_name" class="form-control" placeholder="First Name" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+        <label>Last Name</label></div>
+        <div class="col-md-8"><input type="text" name="last_name" class="form-control" placeholder="Last Name" required>
+    </div>
+</div>
+        <div class="row">
+            <div class="col-md-4">    
+        <label>User Name</label></div>
+        <div class="col-md-8"><input type="text" name="username" class="form-control" placeholder="User Name" required>
+    </div>
+</div>
+        <div class="row">
+            <div class="col-md-4">
+        <label>Email Id</label></div>
+        <div class="col-md-8"><input type="email" name="email" class="form-control" placeholder="Email Id" required>
+    </div>
+</div>
+        <div class="row">
+            <div class="col-md-4">
+        <label>Password</label></div>
+        <div class="col-md-8"><input type="password" name="password1" class="form-control" placeholder="Password" required>
+    </div>
+</div>
+        <div class="row">
+            <div class="col-md-4">
+        <label>Confirm Password</label></div>
+        <div class="col-md-8"><input type="password" name="password2" class="form-control" placeholder="Confirm Password" required>
+    </div>
+</div>
+        
+        <input type="submit" class="btn btn-success" value="Submit">
+
+
+    </form>
+    
+    <p>Already Registered? <a href="login">Login Now!</a> </p>
+    
+    </div>
+    <!-- <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+    <script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script> -->
+</body>
+</html>

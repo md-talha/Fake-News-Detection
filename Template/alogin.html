@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=from, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Admin Login</title>
+    <style>
+        .clr{
+            background-color: #303C45;
+            height: 60px;
+       }
+        .conmar{
+            margin:8% 0% 0% 30%;
+        }
+        .card{
+            width:500px;
+        }
+        
+        .ps{
+            margin-top: 10px;
+        }
+        .row{
+            margin-top: 10px;;
+        }
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">Fake News Detection</a>
+          </div>
+          
+          <ul class="nav navbar-nav navbar-right">
+            
+           
+            
+          </ul>
+        </div>
+      </nav>
+    <div class='conmar'>
+    <div class="card" >
+    <div class="clr text-center">
+        <h2 class="ps" style="color: white;">Employer Login</h2>
+    </div> 
+    <div class="container">
+        <div style="color: red">
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    <form action="alogin" method="POST">
+        {% csrf_token %}
+        <div class="row">
+        <div class="col-md-4">
+        <label class="mar">User Name</label>
+    </div>    
+    <div class="col-md-8">
+        <input type="text" name="username" class="form-control"  placeholder="username" required>
+    </div>
+    </div>  
+    <div class="row">
+        <div class="col-md-4">
+        <label class="mar">Password</label>
+    </div>
+    <div class="col-md-8">
+    <input type="password" name="password" class="form-control" placeholder="password" required>
+</div>
+    </div>    
+        <input type="submit"  class="btn btn-success" value="Login">
+        
+    </form>
+
+
+        <p>Having Trouble Logging In ? <a href="mailto:mdtalha012@gmail.com" >Contact Admin</a></p>
+
+    
+    </div>
+</div>
+</div>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+    <script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+</body>
+</html>
